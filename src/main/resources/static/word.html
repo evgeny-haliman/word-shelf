@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link href="./css/bulma.min.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+    <link href="./css/main.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+</head>
+<body style="overflow-x: auto; white-space: nowrap;">
+<nav aria-label="main navigation" class="navbar is-primary is-fixed-top" role="navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <img alt="Word Shelf" id="logo" src="./images/logo.png" width="60px">
+        </a>
+
+        <a aria-expanded="false" aria-label="menu" class="navbar-burger" data-target="navbarBasicExample" role="button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu" id="navbarBasicExample">
+        <div class="navbar-start">
+            <a class="navbar-item" onclick="topFunction()">
+                Home
+            </a>
+
+            <a class="navbar-item js-modal-trigger" data-target="modal-js-how">
+                How it works
+            </a>
+
+            <a class="navbar-item hidden js-modal-trigger" data-target="modal-js-add" id="addId">
+                Add
+            </a>
+
+            <a class="navbar-item hidden" id="deleteId" onclick="deleteRowByThValue(getRowIndex())">
+                Delete
+            </a>
+
+            <a class="navbar-item hidden js-modal-trigger" data-target="modal-js-update" id="updateId" onclick="fillForm()">
+                Update
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary hidden disabled" id="saveId" onclick="saveData()">
+                        <strong>Save</strong>
+                    </a>
+                    <a class="button is-primary js-modal-trigger" data-target="modal-js-example" id="signupId">
+                        <strong>Sign up</strong>
+                    </a>
+                    <button class="button is-light js-modal-trigger" data-target="modal-js-login" id="loginId">
+                        Log in
+                    </button>
+                    <a class="button is-primary hidden" id="logoutId" onclick=window.location.reload()>
+                        <strong>Log out</strong>
+                    </a>
+                    <a class="button is-primary hidden" id="deleteUserId" onclick="dropAll()">
+                        <strong>Drop all</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<main>
+    <h4 class="title is-4 has-text-link" id="title_4">Example</h4>
+    <div class="notification is-danger is-light hidden">
+        <button class="delete"></button>
+        Before <strong>Delete</strong> or <strong>Update</strong> select some row please!
+    </div>
+    <div class="table-container">
+        <table class="table is-fullwidth is-striped is-hoverable">
+            <thead>
+            <tr>
+                <th><abbr title="Position">#</abbr></th>
+                <th>Word</th>
+                <th>Transcription</th>
+                <th>Translation</th>
+                <th>Sentence</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>1</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr class="is-selected">
+                <th>4</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>9</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            <tr>
+                <th>10</th>
+                <td>Your word</td>
+                <td>Your transcription</td>
+                <td>Your translation</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut autem commodi dignissimos dolorum
+                    eaque earum eos, error eum eveniet facilis inventore minima modi molestias nemo nobis nulla
+                    recusandae vel.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+<footer class="footer">
+    <div class="content has-text-left-mobile">
+        <p>
+            <strong>Created</strong> by <a href="https://evgeny-haliman.github.io/evgeny-haliman/" target="_blank">Evgeny Haliman</a>.
+        </p>
+    </div>
+</footer>
+<script src="./js/modal.js" type="text/javascript"></script>
+<script src="./js/const.js" type="text/javascript"></script>
+<script src="./js/func.js" type="text/javascript"></script>
+<script src="./js/main.js" type="text/javascript"></script>
+
+<div id="modal-js-add" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+        <div class="box">
+            <div class="field">
+                <label class="label">Word</label>
+                <p class="help is-danger" id="wordMessage"></p>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="wordInput">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Transcription</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="transcriptionInput">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Translation</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="translationInput">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Sentence</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="sentenceInput">
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" onclick="submitAdd()">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light" onclick="closeModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<div id="modal-js-update" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+        <div class="box">
+            <div class="field">
+                <label class="label">Word</label>
+                <p class="help is-danger" id="wordUpdateId"></p>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="wordInputId">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Transcription</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="transcriptionInputId">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Translation</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="translationInputId">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Sentence</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" id="sentenceInputId">
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" onclick="submitUpdate()">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light" onclick="closeUpdate()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close" id="closeUpdateId"></button>
+</div>
+
+<div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+        <div class="box">
+            <div class="field">
+                <label class="label">Nickname</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" oninput="nickName()" id="nickInput">
+                </div>
+                <p class="help is-danger" id="nickMessage"></p>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="password" placeholder="Password input" oninput="pass()" id="passInput">
+                    </div>
+                <p class="help is-danger" id="passMessage"></p>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" onclick="submitSignUp()">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light" onclick="closeModalUp()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close" id="modal-close-up"></button>
+</div>
+<div id="modal-js-login" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+        <div class="box">
+            <div class="field">
+                <label class="label">Nickname</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="text" placeholder="Text input" oninput="nickNameIn()" id="nickInputIn">
+                </div>
+                <p class="help is-danger" id="nickMessageIn"></p>
+            </div>
+
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input is-success" type="password" placeholder="Password input" oninput="passIn()" id="passInputIn">
+                </div>
+                <p class="help is-danger" id="passMessageIn"></p>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link" onclick="submitSignIn()">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link is-light" onclick="closeModalIn()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close" id="modal-close"></button>
+</div>
+
+<div id="modal-js-how" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Hello</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <p>After registration, you can save words, transcription, translation and even sentences
+                <br> with this word here. Don't forget to save your changes before exiting.
+                <br> This site does not use cookies.
+                <br>However, this is just a demo project, so you should not use this app for
+                <br>your own purposes.
+                <br>Data is periodically deleted.</p>
+        </section>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>
+</body>
+</html>
